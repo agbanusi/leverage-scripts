@@ -1,2 +1,6 @@
-test-leverage: forge test --mt testLeveragedTrade -vvv
-test-leverage-morpho: forge test --mt testLeveragedTradeMorpho -vvv
+test-leverage: 
+	forge test --mt testLeveragedTrade -vvv
+test-leverage-morpho: 
+	forge test --mt testLeveragedTradeFirst -vvv
+test-morpho: 
+	forge test --mt testLeveragedTradeNone -vvv

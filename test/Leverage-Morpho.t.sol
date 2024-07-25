@@ -120,8 +120,8 @@ contract LeveragedTradeTest is Test {
     function testLeveragedTradeFirst() public {
         // Check initial rates
         (uint256 supplyRateBefore, uint256 borrowRateBefore) = checkPoolRates();
-        console.log("Initial Supply Rate:", supplyRateBefore);
-        console.log("Initial Borrow Rate:", borrowRateBefore);
+        console.log("Initial Supply Rate:", supplyRateBefore * 31536000 * 1e4 /1e18); // in % (1e2) but 2dp hence 1e4
+        console.log("Initial Borrow Rate:", borrowRateBefore * 31536000 * 1e4 /1e18);
 
         // Perform leveraged trade
         console.log("added lev", INITIAL_AMOUNT*LEVERAGE);
@@ -129,11 +129,11 @@ contract LeveragedTradeTest is Test {
 
         // Check final rates
         (uint256 supplyRateAfter, uint256 borrowRateAfter) = checkPoolRates();
-        console.log("Final Supply Rate:", supplyRateAfter);
-        console.log("Final Borrow Rate:", borrowRateAfter);
+        console.log("Final Supply Rate:", supplyRateAfter * 31536000 * 1e4 /1e18);
+        console.log("Final Borrow Rate:", borrowRateAfter * 31536000 * 1e4 /1e18);
 
-        console.log("Final Supply Difference:", supplyRateAfter - supplyRateBefore);
-        console.log("Final Borrow Difference:", borrowRateAfter - borrowRateBefore);
+        console.log("Final Supply Difference:", (supplyRateAfter - supplyRateBefore) * 31536000 * 1e4 /1e18);
+        console.log("Final Borrow Difference:", (borrowRateAfter - borrowRateBefore) * 31536000 * 1e4 /1e18);
 
        
         assert(true);
@@ -142,19 +142,19 @@ contract LeveragedTradeTest is Test {
     function testLeveragedTradeNone() public {
         // Check initial rates
         (uint256 supplyRateBefore, uint256 borrowRateBefore) = checkPoolRates();
-        console.log("Initial Supply Rate:", supplyRateBefore);
-        console.log("Initial Borrow Rate:", borrowRateBefore);
+        console.log("Initial Supply Rate:", supplyRateBefore * 31536000 * 1e4 /1e18);
+        console.log("Initial Borrow Rate:", borrowRateBefore * 31536000 * 1e4 /1e18);
 
         // Perform leveraged trade
         performLeveragedTrade(INITIAL_AMOUNT, (INITIAL_AMOUNT/1e18)*1e6);
 
         // Check final rates
         (uint256 supplyRateAfter, uint256 borrowRateAfter) = checkPoolRates();
-        console.log("Final Supply Rate:", supplyRateAfter);
-        console.log("Final Borrow Rate:", borrowRateAfter);
+        console.log("Final Supply Rate:", supplyRateAfter * 31536000 * 1e4 /1e18);
+        console.log("Final Borrow Rate:", borrowRateAfter * 31536000 * 1e4 /1e18);
 
-        console.log("Final Supply Difference:", supplyRateAfter - supplyRateBefore);
-        console.log("Final Borrow Difference:", borrowRateAfter - borrowRateBefore);
+        console.log("Final Supply Difference:", (supplyRateAfter - supplyRateBefore) * 31536000 * 1e4 /1e18);
+        console.log("Final Borrow Difference:", (borrowRateAfter - borrowRateBefore) * 31536000 * 1e4 /1e18);
 
         assert(true);
     }
@@ -204,8 +204,8 @@ contract LeveragedTradeTest is Test {
 
 // Logs:
 //   20380795
-//   Initial Supply Rate: 1291030601 = 4.09
-//   Initial Borrow Rate: 1434124556 = 4.54
+//   Initial Supply Rate: 1291030601 = 4.09 4.07
+//   Initial Borrow Rate: 1434124556 = 4.54 4.52
 //   added lev 20000000000000000000000
 //   25000000000000000000000 20000000000000000000000 25000000000000000000000 init amnt
 //   0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496
