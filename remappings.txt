@@ -1,0 +1,5 @@
+@balancer-labs/=lib/balancer-v2-monorepo/pkg/
+@aave/core-v3/=lib/aave-v3-core/
+@uniswap/v3-periphery/=lib/v3-periphery/
+@uniswap/v3-core/=lib/v3-core/
+@morpho/=lib/morpho-blue/src/

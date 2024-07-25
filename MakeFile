@@ -1,0 +1,2 @@
+test-leverage: forge test --mt testLeveragedTrade -vvv
+test-leverage-morpho: forge test --mt testLeveragedTradeMorpho -vvv
